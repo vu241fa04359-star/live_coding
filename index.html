@@ -1,1 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Virat Kohli — The Art of Cricket</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #eee9df;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #18352b;
+        padding: 35px;
+    }
+
+    .poster {
+        max-width: 1400px;
+        margin: auto;
+        background: #f7f3eb;
+        padding: 25px;
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    /* ---------------- DESKTOP GRID ---------------- */
+
+    .grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.5fr 0.9fr;
+        grid-template-rows: auto auto auto;
+        gap: 18px;
+    }
+
+    .card {
+        border-radius: 25px;
+        overflow: hidden;
+        position: relative;
+        min-height: 210px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+    }
+
+    .card-content {
+        padding: 28px;
+        position: relative;
+        z-index: 2;
+    }
+
+    h2 {
+        font-size: 28px;
+        line-height: 1;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 400px;
+    }
+
+    .label {
+        display: inline-block;
+        padding: 7px 11px;
+        border-radius: 20px;
+        background: #e8bd48;
+        color: #18352b;
+        font-size: 9px;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        margin-top: 18px;
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        min-height: 650px;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(15,40,31,0.05),
+                rgba(15,40,31,0.75)
+            ),
+            url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv7vIZe7zvV9QWG4IVCEJTQjQjbTaFzeYtVWLSOPRMjQ&s=10")
+            center/cover;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .hero-content {
+        padding: 45px;
+        color: white;
+    }
+
+    .small-title {
+        font-size: 15px;
+        letter-spacing: 5px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .hero h1 {
+        font-family: Georgia, serif;
+        font-size: clamp(70px, 10vw, 145px);
+        line-height: 0.8;
+        letter-spacing: -6px;
+        color: #f6df9a;
+        text-shadow: 3px 4px 0 #453b70;
+        margin-bottom: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+        letter-spacing: 5px;
+        font-weight: bold;
+    }
+
+    /* ---------------- LEFT TOP ---------------- */
+
+    .balance {
+        background: #dce7d6;
+        min-height: 300px;
+    }
+
+    .balance::after {
+        content: "18";
+        position: absolute;
+        right: 20px;
+        bottom: -30px;
+        font-size: 180px;
+        font-weight: bold;
+        color: rgba(24,53,43,0.07);
+    }
+
+    /* ---------------- LEFT LOWER ---------------- */
+
+    .poses {
+        grid-column: 1;
+        grid-row: 2 / span 2;
+        min-height: 540px;
+        background: #efc98d;
+    }
+
+    .pose-list {
+        margin-top: 30px;
+        display: grid;
+        gap: 12px;
+    }
+
+    .pose {
+        padding: 14px 16px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.4);
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    /* ---------------- CENTER BOTTOM ---------------- */
+
+    .spirit {
+        grid-column: 2;
+        grid-row: 3;
+        background: #e2d7ed;
+        min-height: 250px;
+    }
+
+    .circle-row {
+        display: flex;
+        gap: 14px;
+        margin-top: 25px;
+    }
+
+    .circle {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #f7f3eb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+    }
+
+    /* ---------------- CENTER MIDDLE ---------------- */
+
+    .breath {
+        grid-column: 1;
+        grid-row: 3;
+        background: #d6e6eb;
+        min-height: 250px;
+    }
+
+    .wave {
+        margin-top: 30px;
+        height: 45px;
+        border-bottom: 3px solid #426b62;
+        border-radius: 50%;
+        transform: skewY(-3deg);
+    }
+
+    /* ---------------- RIGHT TOP ---------------- */
+
+    .mindful {
+        background: #dcd2e8;
+        min-height: 300px;
+    }
+
+    .mindful-visual {
+        position: absolute;
+        right: 25px;
+        bottom: 20px;
+        font-size: 85px;
+        opacity: 0.3;
+    }
+
+    .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
+    .tag {
+        border: 1px solid #6d5a85;
+        border-radius: 20px;
+        padding: 7px 11px;
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    /* ---------------- RIGHT MIDDLE ---------------- */
+
+    .practice {
+        background: #66557f;
+        color: white;
+        min-height: 250px;
+    }
+
+    .practice-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+        margin-top: 20px;
+    }
+
+    .practice-item {
+        padding: 12px;
+        background: rgba(255,255,255,0.14);
+        border-radius: 12px;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-align: center;
+    }
+
+    /* ---------------- RIGHT BOTTOM ---------------- */
+
+    .journey {
+        grid-column: 3;
+        grid-row: 3;
+        min-height: 300px;
+        background:
+            linear-gradient(rgba(15,45,35,0.65), rgba(15,45,35,0.85)),
+            url("https://images.unsplash.com/photo-1500534623283-312aade485b7")
+            center/cover;
+        color: white;
+    }
+
+    .journey h2 {
+        color: #f1d889;
+    }
+
+    .journey-text {
+        margin-top: 35px;
+        font-family: Georgia, serif;
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    /* ---------------- TOPIC LABEL ---------------- */
+
+    .edition {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 0 5px;
+    }
+
+    .edition-title {
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 4px;
+    }
+
+    .edition-number {
+        font-family: Georgia, serif;
+        font-size: 15px;
+    }
+
+    /* ---------------- MOBILE POSTER ---------------- */
+
+    .mobile-poster {
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+
+        body {
+            padding: 10px;
+        }
+
+        .poster {
+            padding: 8px;
+            border-radius: 15px;
+        }
+
+        .edition {
+            padding: 5px;
+        }
+
+        .grid {
+            display: none;
+        }
+
+        .mobile-poster {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .mobile-card {
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 18px;
+            position: relative;
+            min-height: 145px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .mobile-card h2 {
+            font-size: 21px;
+        }
+
+        .mobile-card p {
+            font-size: 11px;
+        }
+
+        /* Mobile Hero */
+
+        .mobile-hero {
+            height: 430px;
+            color: white;
+            display: flex;
+            align-items: flex-end;
+            padding: 22px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(15,40,31,0.9)
+                ),
+                url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55")
+                center/cover;
+        }
+
+        .mobile-hero h1 {
+            font-family: Georgia, serif;
+            font-size: 65px;
+            line-height: 0.8;
+            color: #f6df9a;
+            text-shadow: 2px 3px 0 #453b70;
+        }
+
+        .mobile-hero small {
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .mobile-tags {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .mobile-tag {
+            border: 1px solid white;
+            border-radius: 15px;
+            padding: 5px 8px;
+            font-size: 7px;
+        }
+
+        .mobile-mindful {
+            background: #dcd2e8;
+        }
+
+        .mobile-breath {
+            background: #d6e6eb;
+        }
+
+        .mobile-practice {
+            background: #66557f;
+            color: white;
+        }
+
+        .mobile-spirit {
+            background: #e2d7ed;
+        }
+
+        .mobile-journey {
+            background: #173d31;
+            color: white;
+        }
+
+        .mobile-poses {
+            background: #efc98d;
+        }
+
+        .mobile-label {
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+        }
+
+        .mobile-list {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .mobile-list div {
+            padding: 8px;
+            background: rgba(255,255,255,0.35);
+            border-radius: 8px;
+            font-size: 8px;
+            font-weight: bold;
+        }
+
+        .mobile-circle-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .mobile-circle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f7f3eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="poster">
+
+    <div class="edition">
+        <div class="edition-title">
+            CRICKET • CULTURE • LEGACY
+        </div>
+
+        <div class="edition-number">
+            18
+        </div>
+    </div>
+
+
+    <!-- ================= DESKTOP ================= -->
+
+    <div class="grid">
+
+        <!-- LEFT TOP -->
+        <section class="card balance">
+            <div class="card-content">
+                <h2>Find Your<br>Balance.</h2>
+
+                <p>
+                    Discipline, consistency and the mindset
+                    required to perform at the highest level.
+                </p>
+
+                <span class="label">
+                    BEGIN THE JOURNEY
+                </span>
+            </div>
+        </section>
+
+
+        <!-- MAIN HERO -->
+        <section class="card hero">
+
+            <div class="hero-content">
+
+                <div class="small-title">
+                    THE ART OF
+                </div>
+
+                <h1>
+                    CRICKET
+                </h1>
+
+                <div class="hero-subtitle">
+                    MIND • SKILL • PASSION
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT TOP -->
+        <section class="card mindful">
+
+            <div class="card-content">
+
+                <h2>
+                    Mindful<br>Moments.
+                </h2>
+
+                <p>
+                    Focus on the next ball.
+                    Stay present. Trust the process.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">FOCUS</span>
+                    <span class="tag">DISCIPLINE</span>
+                    <span class="tag">BELIEVE</span>
+                </div>
+
+            </div>
+
+            <div class="mindful-visual">
+                🏏
+            </div>
+
+        </section>
+
+
+        <!-- LEFT LOWER -->
+        <section class="card poses">
+
+            <div class="card-content">
+
+                <h2>
+                    The<br>Cricketer.
+                </h2>
+
+                <p>
+                    Batting. Running. Training.
+                    Every detail contributes to greatness.
+                </p>
+
+                <div class="pose-list">
+
+                    <div class="pose">
+                        BATTING
+                    </div>
+
+                    <div class="pose">
+                        FITNESS
+                    </div>
+
+                    <div class="pose">
+                        FOOTWORK
+                    </div>
+
+                    <div class="pose">
+                        TIMING
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CENTER BOTTOM -->
+        <section class="card spirit">
+
+            <div class="card-content">
+
+                <h2>
+                    Mind • Body • Spirit.
+                </h2>
+
+                <p>
+                    Great cricket is built through balance,
+                    preparation, confidence and mental strength.
+                </p>
+
+                <div class="circle-row">
+                    <div class="circle">🏏</div>
+                    <div class="circle">⚡</div>
+                    <div class="circle">🎯</div>
+                    <div class="circle">🔥</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CENTER MIDDLE -->
+        <section class="card breath">
+
+            <div class="card-content">
+
+                <h2>
+                    Move With<br>Purpose.
+                </h2>
+
+                <p>
+                    Train with intention. Build rhythm,
+                    awareness and control with every movement.
+                </p>
+
+                <div class="wave"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT MIDDLE -->
+        <section class="card practice">
+
+            <div class="card-content">
+
+                <h2>
+                    Cricket<br>Practices.
+                </h2>
+
+                <div class="practice-grid">
+
+                    <div class="practice-item">
+                        BATTING
+                    </div>
+
+                    <div class="practice-item">
+                        FIELDING
+                    </div>
+
+                    <div class="practice-item">
+                        FITNESS
+                    </div>
+
+                    <div class="practice-item">
+                        MENTALITY
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT BOTTOM -->
+        <section class="card journey">
+
+            <div class="card-content">
+
+                <h2>
+                    Journey Within.
+                </h2>
+
+                <p class="journey-text">
+                    Find discipline.<br>
+                    Build confidence.<br>
+                    Create legacy.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ================= MOBILE POSTER ================= -->
+
+    <div class="mobile-poster">
+
+        <!-- HERO -->
+
+        <section class="mobile-card mobile-hero">
+
+            <div>
+
+                <small>
+                    THE ART OF
+                </small>
+
+                <h1>
+                    VIRAT
+                </h1>
+
+                <h1>
+                    KOHLI
+                </h1>
+
+                <div class="mobile-tags">
+                    <span class="mobile-tag">MIND</span>
+                    <span class="mobile-tag">SKILL</span>
+                    <span class="mobile-tag">PASSION</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MINDFUL -->
+
+        <section class="mobile-card mobile-mindful">
+
+            <div class="mobile-label">
+                MENTALITY
+            </div>
+
+            <h2>
+                Mindful Moments.
+            </h2>
+
+            <p>
+                Stay focused. Stay present.
+                Trust your preparation.
+            </p>
+
+            <div class="mobile-tags">
+                <span class="mobile-tag">FOCUS</span>
+                <span class="mobile-tag">DISCIPLINE</span>
+                <span class="mobile-tag">BELIEVE</span>
+            </div>
+
+        </section>
+
+
+        <!-- MOVE -->
+
+        <section class="mobile-card mobile-breath">
+
+            <div class="mobile-label">
+                TRAINING
+            </div>
+
+            <h2>
+                Move With Purpose.
+            </h2>
+
+            <p>
+                Train with intention and build
+                rhythm, awareness and control.
+            </p>
+
+            <div class="wave"></div>
+
+        </section>
+
+
+        <!-- PRACTICES -->
+
+        <section class="mobile-card mobile-practice">
+
+            <div class="mobile-label">
+                THE COMPLETE CRICKETER
+            </div>
+
+            <h2>
+                Cricket Practices.
+            </h2>
+
+            <div class="mobile-list">
+
+                <div>BATTING</div>
+                <div>FIELDING</div>
+                <div>FITNESS</div>
+                <div>MENTALITY</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SPIRIT -->
+
+        <section class="mobile-card mobile-spirit">
+
+            <h2>
+                Mind • Body • Spirit.
+            </h2>
+
+            <p>
+                Balance preparation, confidence,
+                fitness and mental strength.
+            </p>
+
+            <div class="mobile-circle-row">
+                <div class="mobile-circle">🏏</div>
+                <div class="mobile-circle">⚡</div>
+                <div class="mobile-circle">🎯</div>
+                <div class="mobile-circle">🔥</div>
+            </div>
+
+        </section>
+
+
+        <!-- JOURNEY -->
+
+        <section class="mobile-card mobile-journey">
+
+            <div class="mobile-label">
+                LEGACY
+            </div>
+
+            <h2>
+                Journey Within.
+            </h2>
+
+            <p style="margin-top:20px;
+                      font-family:Georgia,serif;
+                      font-size:18px;">
+                Find discipline.<br>
+                Build confidence.<br>
+                Create legacy.
+            </p>
+
+        </section>
+
+
+        <!-- POSES -->
+
+        <section class="mobile-card mobile-poses">
+
+            <div class="mobile-label">
+                THE CRICKETER
+            </div>
+
+            <h2>
+                Cricket Fundamentals.
+            </h2>
+
+            <div class="mobile-list">
+
+                <div>BATTING</div>
+                <div>FOOTWORK</div>
+                <div>TIMING</div>
+                <div>FITNESS</div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+</body>
+</html>
